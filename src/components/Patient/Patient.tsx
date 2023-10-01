@@ -7,16 +7,17 @@ import './Patient.css'
 
 interface PatientProps  {
     patientDemo: PatientDemo,
-    patientDocStatus:DocStatus[]
+    patientDocStatus:DocStatus[],
+    updateData:(FIN:string, docType:string,docStatus:string)=>void
 }
 
 
-const Patient: React.FC<PatientProps> = ({patientDemo, patientDocStatus}) => {
+const Patient: React.FC<PatientProps> = ({patientDemo, patientDocStatus, updateData}) => {
     return (
         <div className='patient_summary'>
             <PatientData patient={patientDemo}/>
             {patientDocStatus.map((status,idx) => {
-            return <DocumentStatus status={status} key={idx} />
+            return <DocumentStatus FIN={patientDemo.FIN} status={status} key={idx} updateData={updateData}/>
             })
         }
       </div>

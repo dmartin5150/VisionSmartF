@@ -12,16 +12,18 @@ const options = [
 
 export type DocStatus = {
     docType:string;
-    docStatus:string
+    docStatus:string;
 }
 
 interface DocumentStatusProps  {
-    status: DocStatus
+    status: DocStatus;
+    FIN:string;
+    updateData: (FIN:string, docType:string,docStatus:string)=>void;
 }
 
 
 
-const DocumentStatus: React.FC<DocumentStatusProps> = ({status}) => {
+const DocumentStatus: React.FC<DocumentStatusProps> = ({status, FIN, updateData}) => {
     const [curOption,setcurOption] = useState('Complete')
     const {docType, docStatus} = status
 
@@ -29,6 +31,10 @@ const DocumentStatus: React.FC<DocumentStatusProps> = ({status}) => {
     useEffect(() => {
         setcurOption(docStatus)
     },[])
+
+    useEffect(()=> {
+        updateData(FIN,docType,curOption)
+    },[curOption])
 
 
     const onSelect = (option:any) => {
