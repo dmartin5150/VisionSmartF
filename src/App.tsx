@@ -1,9 +1,8 @@
 import React from 'react';
-import PatientData from './components/patientData/PatientData';
-import DocumentStatus from './components/documentsStatus/DocumentStatus';
 import './App.css';
 import { PatientDemo } from './components/patientData/PatientData';
 import { DocStatus } from './components/documentsStatus/DocumentStatus';
+import Patient from './components/Patient/Patient';
 
 const patientDemo: PatientDemo = {
   patientName:'Seamless Apple',
@@ -17,19 +16,23 @@ const patientDocStatus:DocStatus[] =[
 ]
 
 
+type PatientSummary = {
+  patDemo:PatientDemo,
+  patStatus:DocStatus[]
+}
 
-
+const patSummary:PatientSummary[] = [
+  {patDemo:patientDemo, patStatus:patientDocStatus}
+]
 
 function App() {
   return (
     <div className="App">
-      <div className='patient_summary'>
-        <PatientData patient={patientDemo}/>
-        {patientDocStatus.map((status,idx) => {
-          return <DocumentStatus status={status} key={idx} />
-        })
-      }
-      </div>
+    {
+      patSummary.map((patient, idx) => {
+        return <Patient patientDemo={patient.patDemo} patientDocStatus={patient.patStatus} key={idx}/>
+      })
+    }
     </div>
   );
 }
