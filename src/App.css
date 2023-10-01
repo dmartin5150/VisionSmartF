@@ -1,6 +1,14 @@
 .App {
   text-align: center;
+  padding:2rem;
+
+  .patient_summary {
+    display:flex;
+    justify-content: space-between;
+  }
 }
+
+
 
 .App-logo {
   height: 40vmin;

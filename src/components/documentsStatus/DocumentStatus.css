@@ -1,0 +1,8 @@
+.doc-summary {
+    display:flex;
+
+    .doc-status {
+        padding:1rem;
+    }
+
+}
