@@ -1,16 +1,25 @@
 import React from "react";
 import './PatientData.css'
 
-const PatientData = () => {
+export type PatientDemo = {
+    patientName:string;
+    FIN:string;
+    MRN:string
+}
+
+interface PatientDataProps {
+    patient:PatientDemo
+}
+
+
+const PatientData:React.FC<PatientDataProps> = ({patient}) => {
+    const {patientName,FIN,MRN} = patient
     return (
         <div>
-            <div >
-                <div>Patient Data</div>
-            </div>
             <div>
-                <div>Name - Seamless Apple</div>
-                <div>FIN - 1111111</div>
-                <div>MRN - 1111111</div>
+                <div>Name - {patientName}</div>
+                <div>FIN - {FIN}</div>
+                <div>MRN - {MRN}</div>
             </div>
         </div>
     )

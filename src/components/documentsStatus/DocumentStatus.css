@@ -1,8 +1,12 @@
 .doc-summary {
     display:flex;
+    align-items: center;
 
     .doc-status {
         padding:1rem;
     }
+    /* .doc-dropdown{
+        padding-top:1rem;
+    } */
 
 }
